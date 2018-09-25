@@ -42,7 +42,7 @@ group :development, :test do
   gem 'guard-rspec'
   
   # Use postgresql as the database for Active Record
-  gem 'pg'
+  gem 'pg', '~> 0.21'
 
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
