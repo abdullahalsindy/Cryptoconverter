@@ -40,6 +40,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'guard-rspec'
+  gem 'bootstrap-sass'
   
   # Use postgresql as the database for Active Record
   #gem 'pg', '~> 0.21'
