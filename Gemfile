@@ -40,6 +40,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'bootstrap-sass'
   gem 'cucumber', '~> 2.4'
+  gem 'metric_fu', '~> 4.12'
   
   # Use postgresql as the database for Active Record
   #gem 'pg', '~> 0.21'
