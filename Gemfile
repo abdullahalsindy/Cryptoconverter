@@ -42,6 +42,7 @@ group :development, :test do
   gem 'metric_fu', '~> 4.12'
   gem 'cucumber-rails', :require => false
   gem 'selenium-webdriver'
+  gem 'database_cleaner'
   
   # Use sqlite3 as the database for Active Record
    gem 'sqlite3'
