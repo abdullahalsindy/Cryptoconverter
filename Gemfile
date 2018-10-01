@@ -39,12 +39,10 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'bootstrap-sass'
-  gem 'cucumber', '~> 2.4'
   gem 'metric_fu', '~> 4.12'
+  gem 'cucumber-rails', :require => false
+  gem 'selenium-webdriver'
   
-  # Use postgresql as the database for Active Record
-  #gem 'pg', '~> 0.21'
-
   # Use sqlite3 as the database for Active Record
    gem 'sqlite3'
   
