@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
   devise_for :users
   
-    new_user_session GET  /users/sign_in                    {:controller=>"devise/sessions", :action=>"new"}
+
 
   # Example resource route with options:
   #   resources :products do
