@@ -10,17 +10,17 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get 'startup/index'
-
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :startup
+  resources :devise
   
   devise_for :users
   
-
+   new_user_session GET  /users/sign_in                    {:controller=>"devise/sessions", :action=>"new"}
 
   # Example resource route with options:
   #   resources :products do
