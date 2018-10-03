@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'startup/index'
-  get '/users/sign_in'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root 'startup#index'
+   root redirect_to 'startup/index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
+  get 'startup/index'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
@@ -18,6 +17,10 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
   resources :startup
+  
+  devise_for :users
+  
+    new_user_session GET  /users/sign_in                    {:controller=>"devise/sessions", :action=>"new"}
 
   # Example resource route with options:
   #   resources :products do
