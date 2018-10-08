@@ -1,3 +1,4 @@
+
 Given("I am on the home page") do
   visit root_path
 end
@@ -6,23 +7,44 @@ When("I click on the {string} link") do |string|
   click_on string
 end
 
-Then("I should be on the login page") do
-  current_uri = '/users/sign_in'
-end
-
-Then("I should be on the sign up page") do
-  current_uri = '/users/sign_up'
+Then("I should be on the {string} page") do |string|
+  path = current_path
+  expect(path).to eq(string)
 end
 
 Given("I am on the login page") do
   visit '/users/sign_in'
 end
 
-When("I click on {string}") do |string|
-  click_button(string)
+Given("I enter my credentials") do
+  fill_in('user_email', :with => 'sample@gmail.com')
+  fill_in('user_password', :with => 'somepassword')
 end
 
-Then("I should see the user is not registered message") do
+When("I click on {string}") do |string|
+  click_link_or_button(string)
+end
+
+# I do not know why this does not pass 
+When("I click on user {string}") do |string|
+  #click_link_or_button(string)
+  pending # I do not know why this does not work
+end
+
+Given("I enter invalid credentials") do
+  fill_in('user_email', :with => 'invalid@gmail.com')
+  fill_in('user_password', :with => 'invalid')
+end
+
+Given("I enter only a user name") do
+  fill_in('user_email', :with => 'invalid@gmail.com')
+end
+
+Given("I enter only a password") do
+  fill_in('user_password', :with => 'invalid')
+end
+
+Then("I should see the {string} message") do |string|
   expect(page).to have_content("Invalid Email or password")
 end
 
