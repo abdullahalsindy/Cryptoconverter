@@ -1,17 +1,44 @@
-<h1>Home#trade</h1>
-<p>Find me in app/views/home/trade.html.erb</p>
+<!-- <h1>Home#trade</h1> -->
+<!-- <p>Find me in app/views/home/trade.html.erb</p> -->
     <!-- Page Content -->
     <div class="container">
     
         <!-- Heading Row -->
-        <div class="row my-4">
-        
-            <div class="col-lg-4">
+        <div class="row-my-4">
+            <div class="text-center">
                 <h1>Converter</h1>
-                <p>Text can go here.</p>
+<!--                 <p>-></p> -->
+<!--                 <p><-</p> -->
+            </div>
+        </div>
+        <div class="row-ly-16">
+            <div class="text-left">
                 <div class="field">
-                    <input type="submit" value="exchange" />
+                    <p>Convert From:</p>
+                    <form method="post">
+                        <select name="currency" size="2">
+                            <option selected="selected" value="Bitcoin" label="Bitcooin"> Bitcoin </option>
+                            <option                     value="Etherium" label="Etherium"> Etherium </option>
+                        </select>
+                    </form>
                 </div>
             </div>
-            <!-- /.col-md-4 -->
+            <div class="text-right">
+                <div class="field">
+                    <p>Conver To:</p>
+                    <form method="post">
+                        <select name="currency" size="2">
+                            <option selected="selected" value="Bitcoin" label="Bitcooin"> Bitcoin </option>
+                            <option                     value="Etherium" label="Etherium"> Etherium </option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        <!-- /.col-md-4 -->
         </div>
+        <div class="row-my-4">
+            <div class="text-center">
+                <input type="submit" value="exchange" />
+            </div>
+        </div>
+    </div>
