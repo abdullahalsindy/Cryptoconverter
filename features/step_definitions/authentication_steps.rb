@@ -27,8 +27,8 @@ end
 
 # I do not know why this does not pass 
 When("I click on user {string}") do |string|
-  #click_link_or_button(string)
-  pending # I do not know why this does not work
+  click_link_or_button(string)
+  #pending # I do not know why this does not work
 end
 
 Given("I enter invalid credentials") do
@@ -50,3 +50,6 @@ end
 
 
 
+Then("I should be on the sign page") do 
+  user_signed_in?
+end

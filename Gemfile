@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Flexible authentication solution for Rails with Warden
 gem 'devise'
-
+gem 'httparty'
 gem 'json'
 gem 'openssl'
 gem 'coinbase'

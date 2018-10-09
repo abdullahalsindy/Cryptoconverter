@@ -6,3 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user1 = User.create :email => "sample@gmail.com", :password => "somepassword"
+
+coins = [{:symbol => 'BTC', :full_name => 'Bit Coin'}]
+
+  coins.each do |coin|
+    Coin.create!(coin)
+  end
