@@ -11,13 +11,11 @@ class CryptoCompare
 
   def request input, output
   
-    uri_params = '?fsym=BTC&tsyms=USD,EUR'
+    #uri_params = '?fsym=BTC&tsyms=USD,EUR'
 
     uri = @base_uri + @price_api_uri + convert_single(input,output) 
 
     response = HTTParty.get(uri)
-
-  
     my_hash = JSON.parse(response.to_s)
     my_hash[output]
     
