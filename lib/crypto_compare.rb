@@ -9,17 +9,17 @@ class CryptoCompare
     @price_api_uri = "/data/price"
   end 
 
-  def self.test
+  def request input, output
   
     uri_params = '?fsym=BTC&tsyms=USD,EUR'
 
-    uri = @base_uri + @price_api_uri + convert_single('BTC','USD') 
+    uri = @base_uri + @price_api_uri + convert_single(input,output) 
 
     response = HTTParty.get(uri)
 
   
     my_hash = JSON.parse(response.to_s)
-    my_hash['USD']
+    my_hash[output]
     
   end
   

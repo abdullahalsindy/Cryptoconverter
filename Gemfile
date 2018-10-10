@@ -29,7 +29,7 @@ gem 'httparty'
 gem 'json'
 gem 'openssl'
 gem 'coinbase'
-
+gem 'simple_form', '~> 3.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

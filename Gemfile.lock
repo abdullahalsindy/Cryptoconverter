@@ -348,6 +348,9 @@ GEM
       rubyzip (~> 1.2)
     sexp_processor (4.11.0)
     shellany (0.0.1)
+    simple_form (3.5.1)
+      actionpack (> 4, < 5.2)
+      activemodel (> 4, < 5.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     sprockets (3.7.2)
@@ -417,6 +420,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  simple_form (~> 3.5)
   spring
   sqlite3
   turbolinks

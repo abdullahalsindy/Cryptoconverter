@@ -4,10 +4,14 @@
       <!-- Heading Row -->
       <div class="row my-4">
         <div class="col-lg-8">
-         <!--<img class="img-responsive" src="/assets/images/calc.jpg" alt="">-->
-          <!-- temporary quick image to see what a non place holder would look like-->
-          <!--<%= image_tag @a, class: "img-fluid rounded", style: "width:32px;height:32px;" %>-->
-          <%= image_tag 'calc.jpg', class: "img-fluid rounded" %>
+
+   <%= @p %>
+<%= options_from_collection_for_select(Coin.all, :symbol, :full_name) %>
+<%= form_tag({}, {:method => :get}) do %>
+<p> From</p>
+  <%= select_tag :input, options_from_collection_for_select(@coin, :symbol, :full_name), :onchange => "this.form.submit();" %>
+<% end %><i class="fas fa-exchange-alt"></i><i class="fas fa-equals"></i>د.إ
+ 
         </div>
         <!-- /.col-lg-8 -->
         <div class="col-lg-4">
@@ -15,7 +19,7 @@
           <p>CryptoConverter is an online cryptocurrency accounting software package. It is able to quickly notice trends and changes in
           the volatile cryptocurrency market utilizing a straightforward user interface.</p>
          <%= link_to 'Sign Up!', new_user_registration_path, class:"btn btn-primary btn-lg" %>
-         <%= @coin %>
+         
         </div>
         <!-- /.col-md-4 -->
       </div>
@@ -24,7 +28,7 @@
       <!-- Call to Action Well -->
       <div class="card text-white bg-secondary my-4 text-center">
         <div class="card-body">
-          <p class="text-white m-0">Get started with some of many utilities of CryptoConverter. Find out more about each one below!</p>
+          <p style="font-size:2em;"class="text-white m-0"><%=  @exchange %>د.إ</p>
         </div>
       </div>
 

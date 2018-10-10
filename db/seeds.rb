@@ -7,7 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 user1 = User.create :email => "sample@gmail.com", :password => "somepassword"
 
-coins = [{:symbol => 'BTC', :full_name => 'Bit Coin'}]
+coins = [{:symbol => 'BTC', :full_name => 'Bit Coin'},
+          {:symbol => 'USD', :full_name => 'Bit Coint'}]
 
   coins.each do |coin|
     Coin.create!(coin)
