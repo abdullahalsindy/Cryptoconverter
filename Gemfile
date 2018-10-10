@@ -30,6 +30,7 @@ gem 'json'
 gem 'openssl'
 gem 'coinbase'
 gem 'simple_form', '~> 3.5'
+gem "select2-rails"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
