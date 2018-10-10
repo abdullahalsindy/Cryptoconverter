@@ -7,7 +7,7 @@ class CoinsController < ApplicationController
     @coin = Coin.ratings
     @calculator = CryptoCompare.new
     @input = params[:input]
-    @output = 'USD'#params[:output]
+    @output = params[:output]#'USD'
     @exchange = @calculator.request @input, @output
   end
   

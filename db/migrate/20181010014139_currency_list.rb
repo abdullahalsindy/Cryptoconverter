@@ -9,3 +9,4 @@ class CurrencyList < ActiveRecord::Migration
       t.timestamps
   end
 end
+end

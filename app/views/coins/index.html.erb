@@ -5,12 +5,14 @@
       <div class="row my-4">
         <div class="col-lg-8">
 
-   <%= @p %>
-<%= options_from_collection_for_select(Coin.all, :symbol, :full_name) %>
+   
 <%= form_tag({}, {:method => :get}) do %>
 <p> From</p>
-  <%= select_tag :input, options_from_collection_for_select(@coin, :symbol, :full_name), :onchange => "this.form.submit();" %>
-<% end %><i class="fas fa-exchange-alt"></i><i class="fas fa-equals"></i>د.إ
+  <%= select_tag :input, options_from_collection_for_select(@coin, :currency, :name), :onchange => "this.form.submit();" %>
+  <i class="fas fa-exchange-alt"></i>
+  <p> To</p>
+   <%= select_tag :output, options_from_collection_for_select(@coin, :currency, :name,"LTC"), :onchange => "this.form.submit();" %>
+<% end %><i class="fas fa-equals"></i>
  
         </div>
         <!-- /.col-lg-8 -->
@@ -28,7 +30,7 @@
       <!-- Call to Action Well -->
       <div class="card text-white bg-secondary my-4 text-center">
         <div class="card-body">
-          <p style="font-size:2em;"class="text-white m-0"><%=  @exchange %>د.إ</p>
+          <p style="font-size:2em;"class="text-white m-0">1 (<%= @input %>)<i class="fas fa-equals ml-2 mr-2"></i><%=  @exchange %> (<%= @output %>)</p>
         </div>
       </div>
 
