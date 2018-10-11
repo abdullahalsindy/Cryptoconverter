@@ -7,7 +7,7 @@
      #   @client = Coinbase::Wallet::Client.new(api_key:@key,api_secret:@secret) 
    # end 
     
-    
+
   #  def getSpotPrice(coin,currency)
     
    #     convString = coin << "-" << currency
