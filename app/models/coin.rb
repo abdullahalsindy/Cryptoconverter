@@ -1,5 +1,5 @@
 class Coin < ActiveRecord::Base
   def self.ratings
-    Coin.all
+    Coin.all.order(:name)
   end
 end
