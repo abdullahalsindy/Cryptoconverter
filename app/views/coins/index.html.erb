@@ -1,36 +1,60 @@
-        <script>
-        $(document).ready(function() { $("#e1").select2({
-    theme: "bootstrap"
-}); $("#e2").select2({
-    theme: "bootstrap"
-}); });
-    </script>
+<script>
+  $(document).ready(function() {
+    $("#e1").select2({theme: "bootstrap"}); 
+    $("#e2").select2({theme: "bootstrap"}); 
+  });
+</script>
+<style>
+  body {
+  background-image: url(<%= asset_path('crypto2.png')%>);
+  //background-size:cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+}
+footer {
+  margin-top:56px;
+}
+.container-box {
+  
+  background-color:white;
+  border-radius:8px;
+  
+}
+</style>
     <!-- Page Content -->
-    <div class="container container-fit">
+    <div class="container container-fit container-box">
 
-      <!-- Heading Row -->
-      <div class="row my-4">
-      <div class="col-lg-8 offset-lg-2">
-        <!--<div class="col-lg-8">-->
+    <!-- Heading Row -->
+    <div class="row my-4">
+    <div class="col-lg-8 offset-lg-2">
+    <!--<div class="col-lg-8">-->
 
    
 <%= form_tag({}, {:method => :get}) do %>
 <div class="row">
-<div class="form-group col-md-5">
-  <%= select_tag :input, options_from_collection_for_select(@coin, :currency, :name, @input), id: "e1", :class => "form-control",:onchange => "this.form.submit();" %>
+<div class="form-group form-group-lg col-md-5">
+  <%= select_tag :input, options_from_collection_for_select(@coin, :currency, :name, @input), id: "e1", :class => "form-control" %>
   </div>
-  <div class="col-md-2 " style="text-align:center;" >
+  <div class="col-md-2 " style="text-align:center;padding: .5em;" >
   <i class="fas fa-exchange-alt"></i>
   </div>
-  <div class="form-group col-md-5">
-   <%= select_tag :output, options_from_collection_for_select(@coin, :currency, :name, @output),id: "e2", :class => "form-control", :onchange =>  "this.form.submit();" %>
+  <div class="form-group form-group-lg col-md-5">
+   <%= select_tag :output, options_from_collection_for_select(@coin, :currency, :name, @output),id: "e2", :class => "form-control" %>
+<!-- , :onchange =>  "this.form.submit();" -->
 </div>
 </div>
-<div class="row">
-<div class="col-md-6 offset-md-3">
-<%= text_field_tag :qty, nil , class: "form-control" %>
+<div class="row" style="margin-top:2em;">
+<div class="  form-group col-md-4 offset-md-4 ">
+<%= text_field_tag :qty, nil , class: "form-control",placeholder: "Quantity" %>
 </div>
 </div>
+  <div class="row">
+<div class="  form-group col-md-4 offset-md-4">
+<input class="btn btn-lg btn-primary btn-block"  type="submit" value="Convert" />
+</div>
+</div>
+ 
 <% end %>
  
      <!--  </div>-->
@@ -48,12 +72,13 @@
       <!-- /.row -->
 
       <!-- Call to Action Well -->
-      <div class="card text-white bg-secondary my-4 text-center">
+     <!--<div class="card text-white bg-secondary my-4 text-center">-->
         <div class="card-body">
           <!--<p style="font-size:2em;"class="text-white m-0">1 (<%= @input %>)<i class="fas fa-equals ml-2 mr-2"></i><%=  @exchange %> (<%= @output %>) <%= @test %></p>-->
-        <p style="font-size:2em;"class="text-white m-0"><%=  @exchange %> </p>
-        </div>
+        <p style="font-size:2em;"class="nottext-white m-0"><%=  @exchange %> </p>
+       <!-- </div>-->
       </div>
 
     </div>
     <!-- /.container -->
+     <a href="https://www.vecteezy.com" style="visibility:hidden;">Graphics Provided by Vecteezy</a> 
