@@ -5,6 +5,6 @@ Given("I am on the trade page") do
 end
 
 When("i click the exchange button") do
-    click_on "exchange"
+    click_on "Convert"
 end
 
