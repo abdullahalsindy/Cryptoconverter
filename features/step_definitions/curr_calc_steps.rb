@@ -1,5 +1,7 @@
-Given("I am on  trade page") do
-    visit 'home/trade'
+Given("I am on the trade page") do
+	if (:user)
+		visit root_path
+	end
 end
 
 When("i click the exchange button") do
