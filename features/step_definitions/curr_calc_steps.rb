@@ -9,4 +9,3 @@ end
 Then("i should be given the exchange rate between the coins") do
 	:exchange == :calculator#calculator(:input, :output)
 end
-
