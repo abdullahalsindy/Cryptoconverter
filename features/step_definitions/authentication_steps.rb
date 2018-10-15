@@ -49,3 +49,8 @@ Then("I should see the {string} message") do |string|
 end
 
 
+
+Then("I should be on the sign page") do 
+  :user_signed_in?
+end
+
