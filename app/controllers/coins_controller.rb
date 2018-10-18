@@ -1,4 +1,5 @@
-require_dependency 'crypto_compare.rb' 
+require_dependency 'crypto_compare.rb'
+require 'date' 
 
 class CoinsController < ApplicationController
 before_filter :authenticate_user!
@@ -10,6 +11,14 @@ before_filter :authenticate_user!
     @output = params[:output] || 'USD'
     if params[:qty].to_i <= 0 then @q = 1 else @q = params[:qty].to_i end
     @exchange = @calculator.request(@input, @output)
+    @graphData = @calculator.history_to_day(@input, @output, 30)
+    
+    
+    
+    @dates = @graphData.map {|x| Time.at(x.values[0]).to_date.day}
+    @prices = @graphData.map {|x| x.values[1]}
+    
+     
     @exchange = @exchange.nil? ? "No data available please report to the site owners": "#{@q} (#{@input})" +" = " + "#{ (@q * @exchange)} (#{@output})"
 
   end
