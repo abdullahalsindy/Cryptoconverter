@@ -17,17 +17,23 @@ Given("I am on the login page") do
 end
 
 Given("I enter my credentials") do
-  fill_in('user_email', :with => 'sample@gmail.com')
-  fill_in('user_password', :with => 'somepassword')
+  @user = User.create :email => "sample@gmail.com", :password => "somepassword"
+  page.fill_in('user_email', id: "user_email",with:  'sample@gmail.com')
+  page.fill_in('user_password', id: "user_password", with: 'somepassword')
 end
 
 When("I click on {string}") do |string|
   click_link_or_button(string)
 end
 
+Then("I should be on the {string} page2") do |string|
+  apath = current_path
+  expect(apath).to eq(string)
+end
+
 # I do not know why this does not pass 
 When("I click on user {string}") do |string|
-  click_link_or_button(string)
+  click_on(string)
   #pending # I do not know why this does not work
 end
 
@@ -48,9 +54,4 @@ Then("I should see the {string} message") do |string|
   expect(page).to have_content("Invalid Email or password")
 end
 
-
-
-Then("I should be on the sign page") do 
-  :user_signed_in?
-end
 

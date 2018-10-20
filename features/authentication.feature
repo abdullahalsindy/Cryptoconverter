@@ -22,7 +22,7 @@ Scenario: User is registered
 Given I am on the login page
 And I enter my credentials
 When I click on user "Log in"
-Then I should be on the "/" page
+Then I should be on the "/" page2
 #MWW
 
 Scenario: User is not registered
