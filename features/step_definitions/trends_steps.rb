@@ -7,7 +7,7 @@ When("I select a different timeframe to be displayed on the trends graph") do
 	CryptoCompare.new.history_to_day(@input, @output, 30).map {|x| Time.at(x.values[0]).to_date.day.changed?}
 end
 Then("I should see that graph update to display the timeframe") do
-	:graph.time == :timeframe # model variable
+	CryptoCompare.new.history_to_day(@input, @output, 30).map {|x| Time.at(x.values[0])} == :graphData
 end
 
 Given("I am on the trends page") do
