@@ -2,6 +2,7 @@ require_dependency 'crypto_compare.rb'
 require 'date' 
 
 class CoinsController < ApplicationController
+    include ActiveModel::Dirty
 before_filter :authenticate_user!
   
   def index
@@ -17,7 +18,6 @@ before_filter :authenticate_user!
     
     @dates = @graphData.map {|x| Time.at(x.values[0]).to_date.day}
     @prices = @graphData.map {|x| x.values[1]}
-    
      
     @exchange = @exchange.nil? ? "No data available please report to the site owners": "#{@q} (#{@input})" +" = " + "#{ (@q * @exchange)} (#{@output})"
 

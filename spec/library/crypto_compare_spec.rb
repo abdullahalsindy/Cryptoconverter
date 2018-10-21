@@ -1,4 +1,4 @@
-#require 'rails_helper'
+require 'rails_helper'
 require_relative '../../lib/crypto_compare.rb' 
 
 RSpec.describe 'CryptoCompare' do

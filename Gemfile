@@ -57,6 +57,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'bootstrap-sass'
   gem 'metric_fu', '~> 4.12'
+  gem 'simplecov', require: false
   gem 'cucumber-rails', :require => false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
