@@ -16,7 +16,7 @@ Given("On the trade page") do
 	end
 end
 When("I select a different currency") do
-	:currency.changed # model variable
+	CryptoCompare.new.history_to_day(@input, @output, 30).map {|x| x.values[1].changed?}
 end
 Then("I should see the graph for that currency") do
 	:graph.curr == :currency # model variable
