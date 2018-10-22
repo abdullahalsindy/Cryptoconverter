@@ -27,10 +27,6 @@ class CryptoCompare
     "?fsym=#{ input }&tsyms=#{ output }"
   end 
   
-  def convert_multiple input, output
-    "?fsym=#{ input }&tsyms=#{ output }" 
-  end
-
   #accepts symbol to convert from as a string, symbol to convert to as a string, and limit as an int
   #returns an array of hashs
   #hashs are in the form 

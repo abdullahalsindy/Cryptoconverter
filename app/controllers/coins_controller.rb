@@ -6,7 +6,7 @@ class CoinsController < ApplicationController
 before_filter :authenticate_user!
   
   def index
-    @coin = Coin.ratings
+    @coin = Coin.get_coins
     @calculator = CryptoCompare.new
     @input = params[:input] || 'BTC'
     @output = params[:output] || 'USD'

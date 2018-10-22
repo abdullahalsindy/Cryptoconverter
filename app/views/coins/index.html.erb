@@ -56,42 +56,6 @@ footer {
 <input class="btn btn-lg btn-primary btn-block"  type="submit" value="Convert" />
 </div>
 </div>
- 
- 
-  <!--START GRAPH -->
- <div id="container" style="width:100%; height:400px;"></div>
- <script>
- 
-$(document).ready(function() {
-    $("#e1").select2({theme: "bootstrap"}); 
-    $("#e2").select2({theme: "bootstrap"}); 
-    
-    var myChart = Highcharts.chart('container', {
-        chart: {
-            type: 'line'
-        },
-        title: {
-            text: 'Price History'
-        },
-        xAxis: {
-            categories: <%=  @dates %>
-        },
-        yAxis: {
-            title: {
-                text: 'Price'
-            }
-        },
-        series: [{
-            name: "<%=  @input %>",
-            data: <%=  @prices %>
-        }]
-    });
-});
-
-</script>
-
- <!--END GRAPH -->
- 
 <% end %>
  
      <!--  </div>-->
@@ -115,6 +79,38 @@ $(document).ready(function() {
         <p style="font-size:2em;"class="nottext-white m-0"><%=  @exchange %> </p>
        <!-- </div>-->
       </div>
+ <!--START GRAPH -->
+ <div id="container-graph" style="width:100%; height:400px;"></div>
+ <script>
+ 
+$(document).ready(function() {
+
+
+    var myChart = Highcharts.chart('container-graph', {
+        chart: {
+            type: 'line'
+        },
+        title: {
+            text: 'Price History of ' + "<%=  @input %>"+ ' in ' + "<%=  @output %>"
+        },
+        xAxis: {
+            categories: <%=  @dates %>
+        },
+        yAxis: {
+            title: {
+                text: 'Price in ( ' + "<%=  @output %>" + ' )'
+            }
+        },
+        series: [{
+            name: "<%=  @input %>",
+            data: <%=  @prices %>
+        }]
+    });
+});
+
+</script>
+
+ <!--END GRAPH -->
 
     </div>
     <!-- /.container -->
