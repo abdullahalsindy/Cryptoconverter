@@ -1,10 +1,81 @@
+<link href="css/crypto-style.css" rel="stylesheet">
 <script src="https://code.highcharts.com/highcharts.js"></script>
+
 <script>
   $(document).ready(function() {
     $("#e1").select2({theme: "bootstrap"}); 
     $("#e2").select2({theme: "bootstrap"}); 
   });
   
+Highcharts.createElement('link', {
+    href: 'https://fonts.googleapis.com/css?family=Dosis:400,600',
+    rel: 'stylesheet',
+    type: 'text/css'
+}, null, document.getElementsByTagName('head')[0]);
+
+Highcharts.theme = {
+    colors: ['#18a01c', '#f7a35c', '#90ee7e', '#7798BF', '#aaeeee', '#ff0066',
+        '#eeaaee', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
+    chart: {
+        backgroundColor: null,
+        style: {
+            //fontFamily: 'Dosis, sans-serif'
+        }
+    },
+    title: {
+        style: {
+            fontSize: '16px',
+            fontWeight: 'bold',
+            textTransform: 'uppercase'
+        }
+    },
+    tooltip: {
+        borderWidth: 0,
+        backgroundColor: 'rgba(219,219,216,0.8)',
+        shadow: false
+    },
+    legend: {
+        itemStyle: {
+            fontWeight: 'bold',
+            fontSize: '13px'
+        }
+    },
+    xAxis: {
+        gridLineWidth: 1,
+        labels: {
+            style: {
+                fontSize: '12px'
+            }
+        }
+    },
+    yAxis: {
+        minorTickInterval: 'auto',
+        title: {
+            style: {
+                textTransform: 'uppercase'
+            }
+        },
+        labels: {
+            style: {
+                fontSize: '12px'
+            }
+        }
+    },
+    plotOptions: {
+        candlestick: {
+            lineColor: '#404048'
+        }
+    },
+
+
+    // General
+    background2: '#F0F0EA'
+
+};
+
+// Apply the theme
+Highcharts.setOptions(Highcharts.theme);
+
 </script>
 <style>
   body {
@@ -21,7 +92,39 @@ footer {
   
   background-color:white;
   border-radius:8px;
-  
+
+}
+
+.tabCircle {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+    width: 64px;
+    height: 64px;
+    padding: 16px;
+    
+    background: #fff;
+    border: 2px solid #666;
+    color: #666;
+    text-align: center;
+    
+    font: 24px Arial, sans-serif;
+    
+    //float:left;
+    display:inline-block;
+    margin: 0 1em 0 1em;
+    
+}
+
+.tabCircle:hover {
+  color:black;
+  border: 2px solid black;
+}
+
+
+.active {
+  //color:#00265b;
+  //border: 2px solid #00265b;
 }
 </style>
     <!-- Page Content -->
@@ -79,7 +182,13 @@ footer {
         <p style="font-size:2em;"class="nottext-white m-0"><%=  @exchange %> </p>
        <!-- </div>-->
       </div>
+      <div class="row">
+      <div id="service-choice"  style="margin: 4em auto 4em auto;"><div class="tabCircle"><i class="fas fa-chart-line"></i></div>
+<div class="tabCircle"><i class="fas fa-percent"></i></div>
+<div class="tabCircle"><i class="far fa-list-alt"></i></div></div>
+      </div>
  <!--START GRAPH -->
+
  <div id="container-graph" style="width:100%; height:400px;"></div>
  <script>
  
@@ -88,22 +197,49 @@ $(document).ready(function() {
 
     var myChart = Highcharts.chart('container-graph', {
         chart: {
-            type: 'line'
+            
         },
         title: {
-            text: 'Price History of ' + "<%=  @input %>"+ ' in ' + "<%=  @output %>"
+            text: 'Price History of ' + "<%=  @input %>"+ ' to ' + "<%=  @output %>"
         },
         xAxis: {
-            categories: <%=  @dates %>
+            type: 'datetime'
         },
         yAxis: {
             title: {
-                text: 'Price in ( ' + "<%=  @output %>" + ' )'
+                text: 'Exchange rate'
             }
         },
+         plotOptions: {
+                area: {
+                    fillColor: {
+                        linearGradient: {
+                            x1: 0,
+                            y1: 0,
+                            x2: 0,
+                            y2: 1
+                        },
+                        stops: [
+                            [0, Highcharts.getOptions().colors[0]],
+                            [1, Highcharts.Color(Highcharts.getOptions().colors[0]).setOpacity(0).get('rgba')]
+                        ]
+                    },
+                    marker: {
+                        radius: 2
+                    },
+                    lineWidth: 1,
+                    states: {
+                        hover: {
+                            lineWidth: 1
+                        }
+                    },
+                    threshold: null
+                }
+            },
         series: [{
-            name: "<%=  @input %>",
-            data: <%=  @prices %>
+            
+            name: "<%=  @input %>" + ' to ' + "<%=  @output %>",
+            data: <%=  @data %>
         }]
     });
 });
