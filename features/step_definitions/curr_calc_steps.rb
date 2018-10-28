@@ -11,3 +11,10 @@ Then("i should be given the exchange rate between the coins") do
     @exchange_rate_calculator = CryptoCompare.new
     @exchange_rate == @exchange_rate_calculator.request(:input, :output)
 end
+
+Given("I am on the trade page (1)") do
+end
+When("I click on the assets button") do
+end
+Then("I should be given the choice to select a type of currency") do
+end
