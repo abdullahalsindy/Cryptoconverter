@@ -42,6 +42,7 @@ Given("I am on the trade page")
     end
 end
 When("I submit my selected assets and amount")
+    click_on "Submit"
 end
 Then("I should see those assets reflected in the database")
 end
