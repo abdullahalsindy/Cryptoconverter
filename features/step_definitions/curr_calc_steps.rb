@@ -37,6 +37,9 @@ Then("I should be given the choice to select the amount of my selected currency"
 end
 
 Given("I am on the trade page")
+    if (:user)
+        visit root_path
+    end
 end
 When("I submit my selected assets and amount")
 end
