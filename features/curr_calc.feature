@@ -20,7 +20,7 @@ Then I should be given the choice to select the amount of my selected currency
 #GE
 
 Scenario: Store user assets (functionality)
-Given I am on the trade page (3)
+Given I am on the trade page [3]
 When I submit my selected assets and amount
 Then I should see those assets reflected in the database
 #GE

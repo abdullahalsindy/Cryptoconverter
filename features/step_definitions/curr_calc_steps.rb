@@ -35,3 +35,10 @@ end
 Then("I should be given the choice to select the amount of my selected currency")
     @amount = :amount
 end
+
+Given("I am on the trade page")
+end
+When("I submit my selected assets and amount")
+end
+Then("I should see those assets reflected in the database")
+end
