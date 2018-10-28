@@ -25,6 +25,9 @@ Then("I should be given the choice to select a type of currency") do
 end
 
 Given("I am on the trade page [2]")
+    if (:user)
+        visit root_path
+    end
 end
 When("I click on the assets button [2]")
 end
