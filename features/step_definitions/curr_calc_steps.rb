@@ -12,7 +12,10 @@ Then("i should be given the exchange rate between the coins") do
     @exchange_rate == @exchange_rate_calculator.request(:input, :output)
 end
 
-Given("I am on the trade page (1)") do
+Given("I am on the trade page [1]") do
+    if (:user)
+        visit root_path
+    end
 end
 When("I click on the assets button") do
 end

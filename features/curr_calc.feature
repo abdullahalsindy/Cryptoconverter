@@ -8,7 +8,7 @@ Then i should be given the exchange rate between the coins
 #aj
 
 Scenario: Store user assets (type of asset)
-Given I am on the trade page (1)
+Given I am on the trade page [1]
 When I click on the assets button
 Then I should be given the choice to select a type of currency
 #GE
