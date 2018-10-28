@@ -18,6 +18,7 @@ Given("I am on the trade page [1]") do
     end
 end
 When("I click on the assets button") do
+    click_on "Assets"
 end
 Then("I should be given the choice to select a type of currency") do
 end
