@@ -33,3 +33,5 @@ When("I click on the assets button [2]")
     click_on "Assets"
 end
 Then("I should be given the choice to select the amount of my selected currency")
+    @amount = :amount
+end
