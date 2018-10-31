@@ -61,6 +61,7 @@ group :development, :test do
   gem 'cucumber-rails', :require => false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'factory_bot_rails'
   
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
