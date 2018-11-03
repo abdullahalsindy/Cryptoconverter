@@ -15,6 +15,7 @@ require 'devise'
 RSpec.configure do |config|
   # For Devise > 4.1.1
   config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.infer_spec_type_from_file_location!
   # Use the following instead if you are on Devise <= 4.1.1
   # config.include Devise::TestHelpers, :type => :controller
 end
@@ -26,6 +27,7 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 end
+
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are

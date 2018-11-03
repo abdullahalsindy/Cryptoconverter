@@ -53,8 +53,8 @@ group :development, :test do
   gem 'byebug'
   
   
-  gem 'rspec-rails'
-  gem 'guard-rspec'
+  gem 'rspec-rails', '3.8.0'
+ # gem 'guard-rspec'
   gem 'bootstrap-sass'
   gem 'metric_fu', '~> 4.12'
   gem 'simplecov', require: false
