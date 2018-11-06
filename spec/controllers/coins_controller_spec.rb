@@ -30,12 +30,14 @@ describe  CoinsController do
             expect(response.status).to eq(401)
         end
     end
-    
-    it "input should be equal to aparms output or 'USD'" do
-        @output = params[:output]
-        expect(@output).to eq"USD"
+   describe "GET index output" do
+        it "output should be equal to aparms :output or 'USD'" do
+            params = {:output => "BTC",format: :json}
+            get :index, params
+
+            expect(response.status).to eq(401)
+        end
     end
-    
     it "exchange does not come back as a nil value" do 
         @input = 'BTC'
         @output = 'USD'
