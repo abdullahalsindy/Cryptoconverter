@@ -1,6 +1,7 @@
 require_dependency 'crypto_compare.rb'
 require 'date' 
 
+# The CoinsController class is responsible for supplying the app data to the coins view
 class CoinsController < ApplicationController
     include ActiveModel::Dirty
 before_filter :authenticate_user!

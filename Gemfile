@@ -56,8 +56,12 @@ group :development, :test do
   gem 'rspec-rails', '3.8.0'
  # gem 'guard-rspec'
   gem 'bootstrap-sass'
-  gem 'metric_fu', '~> 4.12'
+  #gem 'metric_fu', '~> 4.12'
   gem 'simplecov', require: false
+  gem 'reek', '~> 5.2'
+  gem 'flog', '~> 4.6', '>= 4.6.2'
+  gem 'code_metrics', '~> 0.1.3'
+  #gem 'Saikuro', '~> 1.1'
   gem 'cucumber-rails', :require => false
   gem 'selenium-webdriver'
   gem 'database_cleaner'
