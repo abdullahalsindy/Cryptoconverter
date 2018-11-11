@@ -53,6 +53,10 @@ describe  CoinsController do
     end
     #pass
     it "graph data is vaild" do
+        @data = CryptoCompare.new.history_to_day(@input, @output, 30).map {|x| [x.values[0]*1000.0,x.values[1]]}
+        @graphData = CryptoCompare.new.history_to_day(@input, @output, 30)
+        expect(@data[0]).to eq(@graphData[0] * 1000)
+        expect(@data[1]).to eq(@graphData[1])
     end
     end
     end
