@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+# The DeviseCreateUsers class is responsible for setting up the user database
 class DeviseCreateUsers < ActiveRecord::Migration
   def change
     create_table :users do |t|

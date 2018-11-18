@@ -1,7 +1,18 @@
 require 'rails_helper.rb'
 
+
+FactoryBot.define do
+  factory :user do
+    email {'sample@gmail.com'}
+    password  {'somepassword'}
+    
+  end
+end
+
 #RSpec.describe CoinController, type: :controller 
 describe  CoinsController do
+  sign_me_in
+  
     context "when testing the coins_controller controller" do
     
     it "The get_coins method should return an array" do
@@ -33,8 +44,7 @@ describe  CoinsController do
    describe "GET index output" do
         it "output should be equal to aparms :output or 'USD'" do
             params = {:output => "BTC",format: :json}
-            get :index, params
-
+            get :index
             expect(response.status).to eq(401)
         end
     end
@@ -60,5 +70,13 @@ describe  CoinsController do
         #expect(@data).to eq(@graphData[0][0] * 1000)
         expect(@data).not_to be_empty
     end
+    
+    describe "GET index test" do
+        it "output should be equal to params" do
+            params = {:input => "BTC", :output => 'USD',:qty => '1' ,format: :json}
+            get :index
+            expect(assigns(:input)).to eq('BTC')
+        end
     end
-    end
+  end
+end

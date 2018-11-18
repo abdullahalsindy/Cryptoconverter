@@ -1,3 +1,4 @@
+# The ApplicationController class is responsible for supplying the app data to the Application view
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.

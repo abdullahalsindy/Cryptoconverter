@@ -12,6 +12,17 @@ require 'rspec/rails'
 # note: require 'devise' after require 'rspec/rails'
 require 'devise'
 
+module ControllerMacros    
+  def sign_me_in
+    before :each do
+      @request.env['devise.mapping'] = Devise.mappings[:user]
+      @current_user = FactoryBot.create(:user)
+      #sign_in :user, @current_user
+      sign_in(@current_user, scope: :user)
+    end 
+  end 
+end
+
 RSpec.configure do |config|
   # For Devise > 4.1.1
   config.include Devise::Test::ControllerHelpers, :type => :controller
@@ -22,13 +33,11 @@ end
 
 RSpec.configure do |config|
   config.include Warden::Test::Helpers
-end
-
-RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+  config.extend ControllerMacros, type: :controller
 end
 
-
+ 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end

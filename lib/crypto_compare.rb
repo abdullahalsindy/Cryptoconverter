@@ -1,6 +1,7 @@
 require 'httparty'
 require 'json'
 
+# The CryptoCompare class is responsible for connecting the app to the crypto compare api
 class CryptoCompare
   attr_reader :base_uri, :parameters
   
@@ -37,10 +38,6 @@ class CryptoCompare
     time = Time.now.to_i
     response = http_request @history_to_day_api, "?fsym=#{ from_symbol }&tsym=#{to_symbol}&limit=#{ limit }&aggregate=1&toTs=#{ time }"
     response['Data']
-  end
-  
-  def json_to_hash json
-  
   end
   
   

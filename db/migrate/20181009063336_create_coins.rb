@@ -1,3 +1,4 @@
+# The CreateCoins class is responsible for setting up the coins database
 class CreateCoins < ActiveRecord::Migration
   def change
     create_table :coins do |t|
