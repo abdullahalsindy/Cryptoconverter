@@ -23,7 +23,7 @@ before_filter :authenticate_user!
     
   def get_exchange
     @exchange = @calculator.request(@input, @output) || -1
-    @exchange = @exchange == -1 ? "No data available please report to the site owners": "#{@qty} (#{@input})" +" = " + "#{ (@qty * @exchange)} (#{@output})"
+    @exchange = @exchange == -1 ? "No data available please report to the site owners": "#{@qty} (#{@input})" +" = " + "#{ (@qty * @exchange).round(6)} (#{@output})"
   end
     
   def set_graph_data

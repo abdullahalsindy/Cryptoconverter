@@ -76,6 +76,24 @@ Highcharts.theme = {
 // Apply the theme
 Highcharts.setOptions(Highcharts.theme);
 
+
+function tabs(event, tabName) {
+    var i;
+    var x = document.getElementsByClassName("tab");
+    for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+    }
+    
+    
+    tablinks = document.getElementsByClassName("tabCircle");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    // Show the current tab, and add an "active" class to the button that opened the tab
+    document.getElementById(tabName).style.display = "block";
+    event.currentTarget.className += " active";
+}
+
 </script>
 <style>
   body {
@@ -120,11 +138,22 @@ footer {
   color:black;
   border: 2px solid black;
 }
-
-
+button.tabCircle  {
+      outline: none;
+    cursor: pointer;
+}
 .active {
   //color:#00265b;
   //border: 2px solid #00265b;
+  
+}
+#service-choice    button:hover {
+ background-color: #ddd;
+}
+/* Create an active/current tablink class */
+#service-choice button.active {
+    background-color: rgba(47, 182, 47, 0.52);
+    color:black;
 }
 </style>
     <!-- Page Content -->
@@ -151,7 +180,7 @@ footer {
 </div>
 <div class="row" style="margin-top:2em;">
 <div class="  form-group col-md-4 offset-md-4 ">
-<%= text_field_tag :qty, nil , class: "form-control",placeholder: "Quantity" %>
+<%= text_field_tag :qty, nil , class: "form-control",placeholder: @qty %>
 </div>
 </div>
   <div class="row">
@@ -183,13 +212,21 @@ footer {
        <!-- </div>-->
       </div>
       <div class="row">
-      <div id="service-choice"  style="margin: 4em auto 4em auto;"><div class="tabCircle"><i class="fas fa-chart-line"></i></div>
-<div class="tabCircle"><i class="fas fa-percent"></i></div>
-<div class="tabCircle"><i class="far fa-list-alt"></i></div></div>
+        <div id="service-choice"  style="margin: 4em auto 4em auto;">
+          <button class="tabCircle " onclick="tabs(event,'container-graph')"><i class="fas fa-chart-line"></i></button>
+          <button class="tabCircle " onclick="tabs(event,'container-assets')"><i class="far fa-list-alt"></i></button>
+        </div>
       </div>
  <!--START GRAPH -->
 
- <div id="container-graph" style="width:100%; height:400px;"></div>
+
+ <div id="container-graph" class="tab" style="width:100%; height:400px;"></div>
+ 
+ <div id="container-assets" class="tab" style="width:100%; height:400px; display:none;">
+ 
+  Not fully implemented
+ 
+ </div>
  <script>
  
 $(document).ready(function() {
