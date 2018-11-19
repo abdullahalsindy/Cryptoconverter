@@ -16,38 +16,56 @@ describe  CoinsController do
     context "when testing the coins_controller controller" do
     
     it "The get_coins method should return an array" do
-        @coin = Coin.get_coins
-        expect(@coin.nil?).to be false
+      @coin = Coin.get_coins
+      expect(@coin.nil?).to be false
     end
     #pass
+    
+
     it "when the calculator is created instance should not be nil" do
         @calculator = CryptoCompare.new
         expect(@calculator.nil?).to be false
     end
-    #pass
+    
+    it "@calculator should not be nil" do
+            get :index
+            expect(assigns(@calculator).nil?).to eq(false)
+    end
+    
     it "If the exchange is nil should prompt for help" do
-    @input = 'STI'
-    @output = 'UTS'
-    @exchange = CryptoCompare.new.request(@input,@output)
-    expect(@exchange.nil?).to be true
+      @input = 'STI'
+      @output = 'UTS'
+      @exchange = CryptoCompare.new.request(@input,@output)
+      expect(@exchange.nil?).to be true
     
     end
     #pass
-    describe "GET index" do
-        it "input should be equal to aparms :input or 'BTC'" do
-            params = {:input => "BTC",format: :json}
+    describe "GET index input parameter" do
+        it "input should be equal to params :inpu" do
+            params = {:input => "ASD"}
             get :index, params
-
-            expect(response.status).to eq(401)
+            expect(assigns(:input)).to eq('ASD')
         end
-    end
-   describe "GET index output" do
-        it "output should be equal to aparms :output or 'USD'" do
-            params = {:output => "BTC",format: :json}
+        
+        it "input should be equal to 'BTC' if no params passed" do
             get :index
-            expect(response.status).to eq(401)
+            expect(assigns(:input)).to eq('BTC')
         end
     end
+    
+   describe " GET index output parameter" do
+        it "output should be equal to aparms :output or 'USD'" do
+            params = {:output => "EUR"}
+            get :index, params
+            expect(assigns(:output)).to eq('EUR')
+        end
+        
+        it "output should be equal to 'USD' if no params passed" do
+            get :index
+            expect(assigns(:output)).to eq('USD')
+        end
+    end
+    
     it "exchange does not come back as a nil value" do 
         @input = 'BTC'
         @output = 'USD'
@@ -71,12 +89,71 @@ describe  CoinsController do
         expect(@data).not_to be_empty
     end
     
-    describe "GET index test" do
-        it "output should be equal to params" do
-            params = {:input => "BTC", :output => 'USD',:qty => '1' ,format: :json}
+    describe "@input should bet set to a default value" do
+        it "@input should be equal to BTC" do
+            params = {:input => "BTC", :output => 'USD',:qty => '1'}
             get :index
             expect(assigns(:input)).to eq('BTC')
         end
     end
+    
+    describe "@qty should be an integer when :qty is a string" do
+        it "@qty should not be a string" do
+            params = {:input => "BTC", :output => 'USD',:qty => '10'}
+            get :index,params
+            expect(assigns(:qty)).not_to be_a_kind_of(String)
+        end
+        
+        it "@qty should not be a string when input other htan a number" do
+            params = {:input => "BTC", :output => 'USD',:qty => 'not a number'}
+            get :index,params
+            expect(assigns(:qty)).not_to be_a_kind_of(String)
+        end
+        
+        it "@qty should be a integer" do
+            params = {:input => "BTC", :output => 'USD',:qty => '10'}
+            get :index,params
+            expect(assigns(:qty)).to be_a_kind_of(Float)
+        end
+    end
+    
+    describe "@qty should be set to a default value" do
+        it "@qty should be equal to 1" do
+            params = {:input => "BTC", :output => 'USD',:qty => ''}
+            get :index,params
+            expect(assigns(:qty)).to eq(1)
+        end
+    end
+    
+    describe "@qty should be set to params :qty" do
+        it "@qty should be equal to 1" do
+            params = {:input => "BTC", :output => 'USD',:qty => '5'}
+            get :index,params
+            expect(assigns(:qty)).to eq(5)
+        end
+    end
+    
+    describe "@qty should be greater than 0" do
+        it "should not be negative" do
+            params = {:input => "BTC", :output => 'USD',:qty => '-5'}
+            get :index,params
+            expect(assigns(:qty)).to be > 0
+        end
+        
+        it "should not be zero" do
+            params = {:input => "BTC", :output => 'USD',:qty => '0'}
+            get :index,params
+            expect(assigns(:qty)).to be > 0
+        end
+    end
+    
+    describe "test" do
+        it "test" do
+            params = {:input => "BTC", :output => 'USD',:qty => '5'}
+            get :index,params
+            expect(assigns(:qty)).to eq(5)
+        end
+    end
+
   end
 end

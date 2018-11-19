@@ -11,17 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181010014139) do
+ActiveRecord::Schema.define(version: 20181009063336) do
 
   create_table "coins", force: :cascade do |t|
-    t.string   "currency"
-    t.string   "name"
-    t.string   "symbol"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "currencies", force: :cascade do |t|
     t.string   "currency"
     t.string   "name"
     t.string   "symbol"

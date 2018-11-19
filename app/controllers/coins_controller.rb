@@ -17,7 +17,7 @@ before_filter :authenticate_user!
   def get_params
     @input = params[:input] || 'BTC'
     @output = params[:output] || 'USD'
-    @qty = params[:qty].to_i
+    @qty = params[:qty].to_f
     if @qty <= 0 then @qty = 1 else @qty end
   end
     
