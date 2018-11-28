@@ -1,2 +1,6 @@
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<div class="message-box <%= notice.nil? %> <%= alert.nil? %>">
+<p class="alert alert-success <%= notice.nil? %>"><%= notice %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+<p class="alert alert-warning  <%= alert.nil? %>"><%= alert %><a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a></p>
+
+</div>
+

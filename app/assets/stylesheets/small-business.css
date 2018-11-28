@@ -13,3 +13,28 @@ body {
     padding-top: 56px;
   }
 }
+
+
+.alert.true {
+  display:none;
+}
+
+.notice.true {
+  display:none;
+}
+
+.alert,.notice {
+  
+}
+
+.message-box {
+  text-align:center;
+    max-width: 25em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+}
+
+.message-box {margin-top:64px;}
+
+.message-box.false {margin-top:2em;}
